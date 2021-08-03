@@ -1,0 +1,44 @@
+---
+title: "eds-212-day-1"
+author: "Connor Flynn"
+date: "8/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo= TRUE)
+library(tidyverse)
+library(ggplot2)
+```
+
+
+# Fish Weight Markdown
+
+*Afternoon Interactive*
+
+**Practice Function / Reproducibility**
+
+```{r}
+fish_weight <- function(l, a, b){
+  a*(l^b)
+}
+#milkfish
+fish_weight(l = 60, a = 0.0905, b = 2.52)
+#giant trevally 
+fish_weight(l = 60, a = 0.0353, b = 3.05)
+#great barracuda
+fish_weight(l = 60, a = 0.0181, b = 3.27)
+```
+```{r}
+fish_length <-seq(from = 0,  to = 200, by = 1)
+
+barracuda_weight = fish_weight(l = fish_length, a = 0.0181, b = 3.27)
+
+barracuda_df <- data.frame(fish_length, barracuda_weight)
+
+ggplot(data = barracuda_df, aes(x= fish_length, y = barracuda_weight)) + geom_point()
+```
+
+
+
+
